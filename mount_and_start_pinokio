@@ -12,6 +12,7 @@ sudo mount /dev/mapper/base_ai /run/media/p/backups
 
 cd "$PINOKIO_DIR"
 XDG_CONFIG_HOME="${PINOKIO_DIR}/.config" ./Pinokio-3.9.0.AppImage
+cd / # Change directory to root before unmounting
 sudo umount /run/media/p/backups
 sudo cryptsetup luksClose base_ai
 rmdir /run/media/p/backups
