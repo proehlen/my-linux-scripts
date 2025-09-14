@@ -5,7 +5,7 @@ PINOKIO_DIR="${PINOKIO_DRIVE}/ai"
 
 set -e
 set -o pipefail
-sudo mkdir "$PINOKIO_DRIVE"
+sudo mkdir -p "$PINOKIO_DRIVE"
 sudo chmod 777 /run/media/p/backups 
 sudo cryptsetup luksOpen /dev/sda1 base_ai
 sudo mount /dev/mapper/base_ai /run/media/p/backups 
