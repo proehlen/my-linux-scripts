@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+PINOKIO_DRIVE="/run/media/p/backups"
+PINOKIO_DIR="${PINOKIO_DRIVE}/ai"
+
+set -e
+set -o pipefail
+sudo mkdir "$PINOKIO_DRIVE"
+sudo chmod 777 /run/media/p/backups 
+sudo cryptsetup luksOpen /dev/sda1 base_ai
+sudo mount /dev/mapper/base_ai /run/media/p/backups 
+
+cd "$PINOKIO_DIR"
+XDG_CONFIG_HOME="${PINOKIO_DIR}/.config" ./Pinokio-3.9.0.AppImage
+sudo umount /run/media/p/backups
+sudo cryptsetup luksClose base_ai
+rmdir /run/media/p/backups
