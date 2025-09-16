@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Set the directory to search (user's home directory)
+search_dir="$HOME"
+
+# Set the number of days to look back
+days=7
+
+# Find files with the specified extensions that were modified in the last week
+find "$search_dir" -type f \( -name "*.png" -o -name "*.jpg" -o -name "*.webp" \) -mtime -$days
+
