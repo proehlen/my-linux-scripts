@@ -16,7 +16,7 @@ search_term="$1"
 
 # Find files containing the search term that were modified in the last week
 # and format their modification time, then sort the output.
-find "$search_dir" -type f -mtime -$days -print0 2>/dev/null | xargs -0 rg -l "$search_term" | while IFS= read -r file; do
+find "$search_dir" -type f -mtime -$days -print0 2>/dev/null | xargs -0 rg -l "$search_term" 2>/dev/null | while IFS= read -r file; do
     if [ -f "$file" ]; then # Ensure it's a regular file before processing
         mod_time=$(date -r "$file" +"%Y-%m-%d %H:%M")
         echo "$mod_time $file"
