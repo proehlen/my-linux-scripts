@@ -7,5 +7,4 @@ search_dir="$HOME"
 days=7
 
 # Find files with the specified extensions that were modified in the last week
-find "$search_dir" -type f \( -name "*.png" -o -name "*.jpg" -o -name "*.webp" \) -mtime -$days -printf "%TY-%Tm-%Td %TT %p\n" | sort
-
+find "$search_dir" -type f \( -name "*.png" -o -name "*.jpg" -o -name "*.webp" \) -mtime -$days -printf "%TY-%Tm-%Td %TH:%TM %p\n" | sort
