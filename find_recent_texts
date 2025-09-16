@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Set the directory to search (user's home directory)
+search_dir="$HOME"
+
+# Set the number of days to look back
+days=7
+
+# Check if a search term is provided
+if [ -z "$1" ]; then
+    echo "Usage: $0 <search_text>"
+    exit 1
+fi
+
+search_term="$1"
+
+# Find files containing the search term that were modified in the last week
+# and format their modification time, then sort the output.
+rg --files --max-age "${days} days" -l "$search_term" "$search_dir" | while IFS= read -r file; do
+    if [ -f "$file" ]; then # Ensure it's a regular file before processing
+        mod_time=$(date -r "$file" +"%Y-%m-%d %H:%M")
+        echo "$mod_time $file"
+    fi
+done | sort
