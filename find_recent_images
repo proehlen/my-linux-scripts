@@ -4,7 +4,7 @@
 search_dir="$HOME"
 
 # Set the number of days to look back
-days=7
+days=31
 
 # Find files with the specified extensions that were modified in the last week
 find "$search_dir" \
@@ -16,6 +16,25 @@ find "$search_dir" \
     grep -ivI launch |
     grep -ivI logo |
     grep -ivI screenshot |
-    grep -ivI bazaar    
+    grep -ivI bazaar |
+    grep -ivI sdk |
+    grep -ivI elpa |
+    grep -ivI hdpi |
+    grep -ivI ldpi |
+    grep -ivI mdpi |
+    grep -ivI xhdpi |
+    grep -ivI userguide |
+    grep -ivI pub-cache |
+    grep -ivI node_modules |
+    grep -ivI flutter |
+    grep -ivI fixtures |
+    grep -ivI test |
+    grep -ivI docs |
+    grep -ivI assets |
+    grep -ivI quicklisp |
+    grep -ivI rustup |
+    grep -ivI emacs |
+    grep -ivI steam
+
     
     
